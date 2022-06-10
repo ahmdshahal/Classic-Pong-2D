@@ -20,4 +20,10 @@ public class BallController : MonoBehaviour
         float y = Random.Range(0, 2) == 0 ? -1 : 1;
         rb.velocity = new Vector2(speed * x, speed * y);
     }
+
+    public void ResetBallPosition()
+    {
+        transform.position = Vector2.zero;
+        BallMovement();
+    }
 }

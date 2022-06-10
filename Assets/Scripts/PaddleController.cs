@@ -13,7 +13,8 @@ public class PaddleController : MonoBehaviour
     void Update()
     {
         rb = GetComponent<Rigidbody2D>();
-        MoveObject(GetInput()); 
+        MoveObject(GetInput());
+        Debug.Log(speed);
     }
 
     private Vector2 GetInput()
