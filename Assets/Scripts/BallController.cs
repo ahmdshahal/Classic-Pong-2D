@@ -26,4 +26,9 @@ public class BallController : MonoBehaviour
         transform.position = Vector2.zero;
         BallMovement();
     }
+
+    public void ActivateSpeedUp(float magnitude)
+    {
+        rb.velocity *= magnitude;
+    }
 }

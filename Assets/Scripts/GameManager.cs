@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public BallController ball;
 
+    [SerializeField] GameObject pause;
+
     public void AddRightScore(int increment)
     {
         rightScore += increment;
@@ -37,5 +39,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            pause.SetActive(true);
+        }
     }
 }
