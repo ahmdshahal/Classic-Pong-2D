@@ -11,7 +11,7 @@ public class PowerUpManager : MonoBehaviour
     public Vector2 powerUpAreaMax;
     public List<GameObject> powerUpTemplateList;    
 
-    public List<GameObject> powerUpList;
+    private List<GameObject> powerUpList;
 
     private float timer;
 

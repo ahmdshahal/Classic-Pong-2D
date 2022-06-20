@@ -8,13 +8,15 @@ public class BallController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public bool isRight;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         BallMovement();
     }
 
-    private void BallMovement()
+    public void BallMovement()
     {
         float x = Random.Range(0, 2) == 0 ? -1 : 1;
         float y = Random.Range(0, 2) == 0 ? -1 : 1;
@@ -30,5 +32,30 @@ public class BallController : MonoBehaviour
     public void ActivateSpeedUp(float magnitude)
     {
         rb.velocity *= magnitude;
+    }
+
+    public void DeactivateSpeedUp(float magnitude)
+    {
+        rb.velocity /= magnitude;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Right Paddle")
+        {
+            isRight = true;
+        }
+        if(collision.gameObject.tag == "Left Paddle")
+        {
+            isRight = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Out")
+        {
+            ResetBallPosition();
+        }
     }
 }

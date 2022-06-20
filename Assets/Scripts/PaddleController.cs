@@ -5,6 +5,10 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] int speed;
+    [SerializeField] int maxSize;
+    [SerializeField] int minSize;
+    [SerializeField] int maxSpeed;
+    [SerializeField] int minSpeed;
     [SerializeField] KeyCode upKey;
     [SerializeField] KeyCode downKey;
 
@@ -14,6 +18,11 @@ public class PaddleController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         MoveObject(GetInput());
+
+        //Limit paddle speed and paddle size
+        speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
+        transform.localScale = new Vector3(0.3f, Mathf.Clamp(transform.localScale.y, minSize, maxSize), 1);
+
         Debug.Log(speed);
     }
 
@@ -34,4 +43,24 @@ public class PaddleController : MonoBehaviour
     {
         rb.velocity = movement;
     }
+
+    public void ExtendPaddle()
+    {        
+        transform.localScale += new Vector3(0, 2);
+    }
+
+    public void ShortenPaddle()
+    {
+        transform.localScale -= new Vector3(0, 2);
+    }
+
+    public void SpeedUpPaddle()
+    {
+        speed += 5;
+    }
+
+    public void DeactivateSpeedUpPaddle()
+    {
+        speed -= 5;
+    }    
 }

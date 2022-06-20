@@ -17,6 +17,11 @@ public class MenuController : MonoBehaviour
         Debug.Log("Quit");
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
     public void ResumeGame()
     {
         Time.timeScale = 1;
@@ -32,5 +37,10 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1;
+    }
+
+    public void CreditScene()
+    {
+        SceneManager.LoadScene("Credit Scene");
     }
 }

@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public int leftScore;
     public int rightScore;
-
     public int maxScore;
 
     public BallController ball;
@@ -19,10 +18,10 @@ public class GameManager : MonoBehaviour
         rightScore += increment;
         ball.ResetBallPosition();
 
-        if(rightScore >= maxScore)
+        if (rightScore >= maxScore)
         {
             GameOver();
-        }
+        }        
     }
 
     public void AddLeftScore(int increment)
